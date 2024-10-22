@@ -15,4 +15,4 @@ dataset/
 *.log
 
 # Ignore the Frontend directory
-/home/punky/ml/tf_gpu/Frontend
+/home/punky/ml/tf_gpu/Frontend/.env
