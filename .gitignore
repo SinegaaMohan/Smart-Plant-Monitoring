@@ -9,10 +9,10 @@ venv/
 dataset/
 
 # Ignore Node.js dependencies
-/home/punky/ml/tf_gpu/Frontend/node_modules/
+Frontend/node_modules/
 
 # Ignore any log files
 *.log
 
 # Ignore the Frontend directory
-/home/punky/ml/tf_gpu/Frontend/.env
+Frontend/.env
