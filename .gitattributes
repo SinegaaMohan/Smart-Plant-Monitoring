@@ -1,6 +1,6 @@
-/frontend/.js linguist-language=JavaScript
-/frontend/.jsx linguist-language=JavaScript
-/frontend/.ts linguist-language=TypeScript
-/frontend/.tsx linguist-language=TypeScript
+/Frontend/.js linguist-language=JavaScript
+/Frontend/.jsx linguist-language=JavaScript
+/Frontend/.ts linguist-language=TypeScript
+/Frontend/.tsx linguist-language=TypeScript
 *.py linguist-language=Python
 *.ipynb linguist-language=Jupyter
