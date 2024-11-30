@@ -1,14 +1,26 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Box, Typography, Paper, Button, Card, CardContent, CircularProgress, List, ListItem, ListItemText, ListItemAvatar, Avatar,
-  LinearProgress, Chip, Divider, Grid
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CircularProgress,
+  Button,
+  useTheme,
+  useMediaQuery,
+  Grid,
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+  Paper,
+  Divider,
+  Chip,
+  LinearProgress,
 } from '@mui/material';
-import { CloudUpload, Clear, Refresh } from '@mui/icons-material';
+import { Clear, CloudUpload, Refresh } from '@mui/icons-material';
 import { useDropzone } from 'react-dropzone';
-import axios from 'axios';
-import { useTheme, useMediaQuery } from '@mui/material';
-
-require('dotenv').config();
 
 const AIPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -19,55 +31,27 @@ const AIPage = () => {
   const [statistics, setStatistics] = useState({ total: 0, healthy: 0, unhealthy: 0 });
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const sendFile = useCallback(async () => {
     if (selectedFile) {
-      let formData = new FormData();
-      formData.append("file", selectedFile);
       setIsLoading(true);
       setError(null);
-      try {
-        const res = await axios.post(process.env.VITE_REACT_APP_API_URL, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        console.log(res.data);
-        if (res.status === 200) {
-          const result = res.data;
-          let classification;
-
-          // Determine classification based on the response
-          if (result.class === 'Pepper__bell___healthy') {
-            classification = 'healthy';
-          } else if (result.class === 'Pepper__bell___Bacterial_spot') {
-            classification = 'unhealthy';
-          } else {
-            classification = 'unknown'; // Handle any unexpected classes
-          }
-
-          // Update the data state
-          setData({ class: classification, accuracy: result.accuracy });
-
-          // Update past searches
-          setPastSearches(prevSearches => [
-            { file: selectedFile, result: { class: classification, accuracy: result.accuracy }, timestamp: new Date().toLocaleString() },
-            ...prevSearches.slice(0, 9)
-          ]);
-
-          // Update statistics based on classification
-          updateStatistics(classification);
-        }
-      } catch (error) {
-        console.error("Error uploading file", error);
-        setError("An error occurred while processing the image.");
-      } finally {
+      // Simulating API call
+      setTimeout(() => {
+        const mockResult = {
+          class: Math.random() > 0.5 ? 'healthy' : 'unhealthy',
+          accuracy: Math.random(),
+        };
+        setData(mockResult);
+        setPastSearches(prevSearches => [
+          { file: selectedFile, result: mockResult, timestamp: new Date().toLocaleString() },
+          ...prevSearches.slice(0, 9)
+        ]);
+        updateStatistics(mockResult.class);
         setIsLoading(false);
-      }
+      }, 2000);
     }
   }, [selectedFile]);
-
-
-
 
   const clearData = () => {
     setData(null);

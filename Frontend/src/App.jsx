@@ -29,17 +29,16 @@ import HomePage from './HomePage';
 import Dashboard from './Dashboard';
 import AIPage from './AIPage';
 
-require('dotenv').config();
-
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "AIzaSyBp7Y_rs8IFz5tRFfFuw-sR1TOXRiqgmL8",
   authDomain: "plant-monitoring-system-8636c.firebaseapp.com",
   projectId: "plant-monitoring-system-8636c",
   storageBucket: "plant-monitoring-system-8636c.appspot.com",
   messagingSenderId: "739518529830",
-  appId: process.env.FIREBASE_APP_ID
+  appId: "1:739518529830:web:148c896865c615134101e7"
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
