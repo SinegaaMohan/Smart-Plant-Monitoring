@@ -1,5 +1,4 @@
-# AI-Enhanced IOT System for Real Time Diagnosting and Monitoring
-
+## Smart Plant Monitoring System Using IoT and Google Cloud Platform
 ## Setting up the Conda Environment
 
 To create a Conda environment identical to the one used in this project, follow these steps:
